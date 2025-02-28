@@ -64,6 +64,10 @@ const MainTable = () => {
     window.location.reload();
   };
 
+  useEffect(()=> {
+    localStorage.setItem("info", JSON.stringify(info))
+  },[info])
+
   return (
     <>
       {info.map((team, index) => {

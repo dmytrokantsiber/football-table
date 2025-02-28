@@ -16,7 +16,7 @@ function App() {
           localStorage.removeItem("info");
           window.location.reload();
         }}
-        style={{ width: "1000px", height: "500px", fontSize: "50px" }}
+        style={{ width: "100px", height: "50px", fontSize: "14px" }}
       >
         УДАЛИТЬ ИСТОРИЮ
       </button>

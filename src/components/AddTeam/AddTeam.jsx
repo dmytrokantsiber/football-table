@@ -3,6 +3,12 @@ import React, { useState } from "react";
 const AddTeam = ({ addTeam }) => {
   const [team, setTeam] = useState("");
   const [isFavourite, setIsFavourite] = useState(false);
+
+  const onClick = () => {
+    setIsFavourite((prevState) => !prevState)
+    setTeam("");
+  }
+
   return (
     <>
       <input
@@ -16,7 +22,7 @@ const AddTeam = ({ addTeam }) => {
       </button>
       <input
         type="checkbox"
-        onClick={() => setIsFavourite((prevState) => !prevState)}
+        onClick={onClick}
         checked={isFavourite}
       />
       Моя команда

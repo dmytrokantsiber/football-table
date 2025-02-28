@@ -33,19 +33,36 @@ const Team = ({
   const temp = info;
   const handleChange = (e) => {
     resultObj = { ...resultObj, [e.target.name]: e.target.value };
-    console.log(resultObj);
+
     temp.forEach((el, index, arr) => {
       if (el.name == resultObj.name) {
         arr[index] = resultObj;
       }
     });
-    console.log(temp);
+
   };
   const handleSubmit = (e) => {
     e.preventDefault();
     calculate(temp);
     localStorage.setItem("info", JSON.stringify(temp));
   };
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+  
+    // Filter out the team from the info array
+    const updatedInfo = temp.filter((team) => team.name !== resultObj.name);
+  
+    // Update the temp array with the new filtered data
+    setInfo(updatedInfo);
+  
+    // Optionally, save the updated info to localStorage as well
+    localStorage.setItem("info", JSON.stringify(updatedInfo));
+  
+    console.log("Updated info after delete:", updatedInfo);
+  };
+  
+
   if (isFavourite) {
     return (
       <div className="a">
@@ -149,6 +166,7 @@ const Team = ({
         <div className="team-stats">{difference}</div>
         <div className="team-stats">{count}</div>
         <button onClick={(e) => handleSubmit(e)}>СОХРАНИТЬ</button>
+        <button onClick={(e) => handleDelete(e)}>УДАЛИТЬ</button>
       </div>
     </div>
   );
